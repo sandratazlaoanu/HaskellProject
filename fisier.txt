@@ -1,4 +1,2 @@
-In lumea aplicatiilor reale, sunt absolut naturale situatiile in care folosim Haskell pentru a realiza programe 
-interactive, care preiau date de la tastatura ...scriu date pe ecran, fac prelucrari si furnizeaza[ rezultatele}.
-Putem afla care este motivul?
-Ana are $$_ mere, mere verzi si multe multe mere!!!
+$ In lumea aplicatiilor reale, sunt absolut naturale situatiile in care folosim Haskell pentru a realiza programe 
+interactive, care preiau date de la tastatura ...scriu date pe ecran, fac prelucrari si furnizeaza in [ rezultatele}.?

@@ -2,12 +2,12 @@ import Data.List
 import System.IO
 import Distribution.Simple.Setup
 import Data.Map (fromListWith, toList)
-import Data.Maybe
-import System.Directory --does file exist?
+import System.Directory
 import Data.Char(toLower,toUpper)
 import Data.Char ( isLetter, isSpace, isAlpha )
 import Data.String
 import Control.Monad
+import System.Console.ANSI --pentru Ansi-Terminal
 
 -- Contorizare aparitii cuvant
 --Lista ordonata
@@ -44,7 +44,9 @@ readFromFile fileName = do
 --Preluarea fisierului care urmeaza sa fie analizat--
 getFileToParse::IO String
 getFileToParse = do {
+    setCursorPosition 3 0;
     putStrLn "Introduceti numele fisierului";
+    setCursorPosition 4 0;
     fileName <- getLine;
     return fileName;
 }
@@ -54,7 +56,9 @@ getExistingFile::String->IO String
 getExistingFile fileName = do {
     condition <- doesFileExist fileName;
     if not condition 
-        then do { putStrLn "Fisierul nu exista.";
+        then do { 
+                  putStrLn "Fisierul nu exista.";
+                  
                   fileName <- getFileToParse;
                   getExistingFile fileName;}
         else return fileName;
@@ -118,7 +122,7 @@ hSpace h n=hPutStr h " ">>hSpace h (n-1)
 --Main function--
 main::IO()
 main=do
-  
+  clearScreen;
   --Citim de la tastatura numele fisierului--
   file_name <- getFileToParse;
   
@@ -142,18 +146,25 @@ main=do
  -- Afisare statistica pe ecran
   
  -- printResult rez
-  
+  clearScreen;
+  setCursorPosition 6 30;
   putStrLn "Optiunile programului:";
+  setCursorPosition 7 30;
   putStrLn "*******************";
+  setCursorPosition 8 30;
   putStrLn "1-Frecventa tuturor cuvintelor.";
+  setCursorPosition 9 30;
   putStrLn "2-Frecventa unui cuvant precizat.";
+  setCursorPosition 10 30;
   putStrLn "3-Terminare program";
+  setCursorPosition 11 30;
   putStrLn "*******************";
+  setCursorPosition 13 0;
   putStrLn "Ce optiune doriti:";
+  setCursorPosition 13 20;
   opt<-getLine;
     if (opt=="1") 
      then do { 
-
 --In fisier--
       h<-openFile "Raport.txt" WriteMode;
       hPutStrLn h "**************************";
@@ -167,11 +178,17 @@ main=do
       putStrLn "**************************";
       putStrLn "Cuvant         Frecventa ";
       putStrLn "**************************";
-      printResult rez}
+     
+      printResult rez;main}
       else if (opt=="2")
       then do {
+        setCursorPosition 15 0;
+        putStrLn "Introduceti cuvantul cautat";
+        setCursorPosition 15 30;
         givenWord<-getLine;
         freq<-return (countOf givenWord lowContents);
+        setCursorPosition 17 0;
         putStrLn("Frecventa cuvantului dat:" ++givenWord);
-        print freq} 
+        setCursorPosition 17 30;
+        print freq;main} 
            else putStrLn "La revedere....";

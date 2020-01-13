@@ -150,7 +150,7 @@ main=do
   setCursorPosition 6 30;
   putStrLn "Optiunile programului:";
   setCursorPosition 7 30;
-  putStrLn "*******************";
+  putStrLn "";
   setCursorPosition 8 30;
   putStrLn "1-Frecventa tuturor cuvintelor.";
   setCursorPosition 9 30;
@@ -158,7 +158,7 @@ main=do
   setCursorPosition 10 30;
   putStrLn "3-Terminare program";
   setCursorPosition 11 30;
-  putStrLn "*******************";
+  putStrLn "";
   setCursorPosition 13 0;
   putStrLn "Ce optiune doriti:";
   setCursorPosition 13 20;
@@ -184,11 +184,11 @@ main=do
       then do {
         setCursorPosition 15 0;
         putStrLn "Introduceti cuvantul cautat";
-        setCursorPosition 15 30;
+        setCursorPosition 15 28;
         givenWord<-getLine;
         freq<-return (countOf givenWord lowContents);
         setCursorPosition 17 0;
         putStrLn("Frecventa cuvantului dat:" ++givenWord);
-        setCursorPosition 17 30;
+        setCursorPosition 17 28;
         print freq;main} 
            else putStrLn "La revedere....";

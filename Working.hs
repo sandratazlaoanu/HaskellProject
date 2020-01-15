@@ -44,9 +44,9 @@ readFromFile fileName = do
 --Preluarea fisierului care urmeaza sa fie analizat--
 getFileToParse::IO String
 getFileToParse = do {
-    setCursorPosition 3 0;
+    setCursorPosition 3 30;
     putStrLn "Introduceti numele fisierului";
-    setCursorPosition 4 0;
+    setCursorPosition 4 30;
     fileName <- getLine;
     return fileName;
 }
@@ -146,7 +146,7 @@ main=do
  -- Afisare statistica pe ecran
   
  -- printResult rez
-  clearScreen;
+  
   setCursorPosition 6 30;
   putStrLn "Optiunile programului:";
   setCursorPosition 7 30;
@@ -159,9 +159,9 @@ main=do
   putStrLn "3-Terminare program";
   setCursorPosition 11 30;
   putStrLn "";
-  setCursorPosition 13 0;
-  putStrLn "Ce optiune doriti:";
-  setCursorPosition 13 20;
+  setCursorPosition 13 30;
+  putStrLn "Ce optiune doriti: ";
+  setCursorPosition 13 50;
   opt<-getLine;
     if (opt=="1") 
      then do { 
@@ -182,13 +182,13 @@ main=do
       printResult rez;main}
       else if (opt=="2")
       then do {
-        setCursorPosition 15 0;
+        setCursorPosition 15 30;
         putStrLn "Introduceti cuvantul cautat";
-        setCursorPosition 15 28;
+        setCursorPosition 15 58;
         givenWord<-getLine;
         freq<-return (countOf givenWord lowContents);
-        setCursorPosition 17 0;
-        putStrLn("Frecventa cuvantului dat:" ++givenWord);
-        setCursorPosition 17 28;
+        setCursorPosition 17 30;
+        putStrLn("Frecventa cuvantului dat-> " ++givenWord);
+        setCursorPosition 17 60;
         print freq;main} 
            else putStrLn "La revedere....";
